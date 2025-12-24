@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --- BASE STYLES --- */
+/* Native CSS biar aman */
 body {
   background-color: #050505;
   color: white;
@@ -12,19 +12,19 @@ body {
 
 h1 { letter-spacing: -0.04em; }
 
-/* --- WARNA KHUSUS ALTERA (Pengganti bg-[#CC1B1B]) --- */
+/* Custom Colors */
 .text-altera { color: #CC1B1B; }
 .bg-altera { background-color: #CC1B1B; }
 .border-altera { border-color: #CC1B1B; }
-.bg-altera-faint { background-color: rgba(204, 27, 27, 0.1); } /* Transparan */
+.bg-altera-faint { background-color: rgba(204, 27, 27, 0.1); }
 
-/* --- SELECTION COLOR (Saat teks di-blok) --- */
+/* Selection Color */
 ::selection {
   background-color: #CC1B1B;
   color: white;
 }
 
-/* --- BACKGROUND IMAGES & TEXTURES (Pengganti bg-[url(...)]) --- */
+/* --- INI KUNCINYA (EFEK) --- */
 .bg-grunge {
   background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
 }
@@ -34,7 +34,6 @@ h1 { letter-spacing: -0.04em; }
   background-size: 100% 4px, 3px 100%;
 }
 
-/* --- ANIMASI --- */
 @keyframes scanline {
   0% { background-position: 0 0; }
   100% { background-position: 0 100%; }
@@ -42,4 +41,77 @@ h1 { letter-spacing: -0.04em; }
 
 .animate-scanline {
   animation: scanline 6s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite; /* 10 detik per putaran */
+}
+
+.animate-spin-slow:hover {
+  animation-duration: 2s; /* Kalau di-hover jadi ngebut */
+  cursor: help;
+}
+
+@keyframes glitch-shake {
+  0% { transform: translate(0, 0) skew(0deg); }
+  5% { transform: translate(-2px, 2px) skew(-1deg); }
+  10% { transform: translate(2px, -2px) skew(1deg); }
+  15% { transform: translate(-2px, -2px) skew(-1deg); }
+  20% { transform: translate(2px, 2px) skew(1deg); }
+  25% { transform: translate(0, 0) skew(0deg); }
+  100% { transform: translate(0, 0) skew(0deg); }
+}
+
+.animate-grunge {
+  animation: glitch-shake 3s infinite; /* Bergetar setiap 3 detik */
+  filter: contrast(120%) brightness(110%); /* Sedikit lebih tajam */
+}
+
+/* Biar makin rusak pas di-hover */
+.animate-grunge:hover {
+  animation: glitch-shake 0.5s infinite; /* Getar cepat pas disentuh */
+  cursor: crosshair;
+}
+
+@keyframes glitch-shake {
+  0% { 
+    transform: translate(0, 0) skew(0deg); 
+    filter: blur(0.5px) contrast(120%) brightness(100%); /* Buram dikit default */
+  }
+  20% { 
+    transform: translate(-3px, 3px) skew(-2deg); 
+    filter: blur(3px) contrast(150%) brightness(120%); /* Buram parah pas gerak */
+  } 
+  40% { 
+    transform: translate(3px, -3px) skew(2deg); 
+    filter: blur(1px) contrast(130%) brightness(90%); 
+  }
+  60% { 
+    transform: translate(-1px, -1px) skew(-1deg); 
+    filter: blur(0px) contrast(100%); /* Tajam sebentar */
+  }
+  80% { 
+    transform: translate(1px, 1px) skew(1deg); 
+    filter: blur(2px) contrast(140%); 
+  }
+  100% { 
+    transform: translate(0, 0) skew(0deg); 
+    filter: blur(0.5px) contrast(120%) brightness(100%); 
+  }
+}
+
+.animate-grunge {
+  animation: glitch-shake 4s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  will-change: transform, filter;
+  mix-blend-mode: hard-light; /* Biar warnanya menyatu kasar dengan background */
+}
+
+.animate-grunge:hover {
+  animation-duration: 0.2s; /* Glitch gila kalau di-hover */
+  cursor: none; /* Kursor hilang biar makin misterius */
 }
