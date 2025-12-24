@@ -32,27 +32,33 @@ export default function Home() {
           </div>
         </nav>
 
-        <div className="flex flex-col gap-2 mb-10">
-          <div className="inline-block self-start border border-altera text-altera bg-altera-faint px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-4 backdrop-blur-md">
+        {/* HEADLINE MOBILE DENGAN EFEK BARU */}
+        <div className="flex flex-col gap-4 mb-24">
+          <div className="inline-block self-start border border-altera text-altera bg-altera-faint px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-4 backdrop-blur-md animate-reveal">
             ● Official Launch Soon
           </div>
           
-          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter">
+          {/* Baris 1: Muncul Kalem */}
+          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter animate-reveal delay-100">
             Built <br/> From
           </h1>
-          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter text-gray-400">
+          
+          {/* Baris 2: Muncul Kalem (Agak Telat) */}
+          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter text-gray-400 animate-reveal delay-200">
             What We
           </h1>
-          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter text-transparent" style={{ WebkitTextStroke: '1px white' }}>
+          
+          {/* Baris 3: SURVIVED (GLITCH EFFECT) */}
+          {/* animate-text-glitch bikin teksnya bergetar RGB */}
+          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter text-transparent animate-reveal delay-300 animate-text-glitch" style={{ WebkitTextStroke: '1px white' }}>
             Survived.
           </h1>
         </div>
 
         {/* --- MOBILE BOX CONTENT --- */}
-        <div className="mt-10 border border-altera bg-altera-faint p-6 pt-12 shadow-xl relative backdrop-blur-md overflow-visible group">
+        <div className="mt-10 border border-altera bg-altera-faint p-6 pt-12 shadow-xl relative backdrop-blur-md overflow-visible group animate-reveal delay-300">
           
           {/* LOGO MOBILE (CORTEIZ STYLE) */}
-          {/* Tambah blur-[0.5px] sebagai base blur */}
           <div className="absolute -top-6 -left-2 w-36 h-16 z-20 animate-grunge blur-[0.5px]">
              <Image src="/images/logo-humanity.png" alt="Altera Logo Sticker" fill className="object-contain object-left drop-shadow-[0_0_5px_rgba(255,255,255,0.2)]" />
           </div>
@@ -102,17 +108,22 @@ export default function Home() {
           
           <div className="col-span-7 relative">
              <div className="relative z-10">
-                <div className="inline-block border border-altera text-altera bg-altera-faint px-4 py-2 mb-8 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+                <div className="inline-block border border-altera text-altera bg-altera-faint px-4 py-2 mb-8 text-xs font-bold uppercase tracking-widest backdrop-blur-md animate-reveal">
                   ● Official Launch Soon
                 </div>
 
                 <h1 className="text-[110px] font-black uppercase leading-[0.85] tracking-tighter">
-                  Built From <br />
-                  <span className="relative inline-block text-white">
+                  {/* Baris 1: Slide Up */}
+                  <span className="block animate-reveal delay-100">Built From</span>
+                  
+                  {/* Baris 2: Slide Up */}
+                  <span className="relative inline-block text-white animate-reveal delay-200">
                     What We
                     <span className="absolute top-1/2 left-[-10%] w-[120%] h-[3px] bg-white/30"></span>
                   </span> <br />
-                  <span className="text-transparent relative hover:text-white transition-colors duration-500 cursor-default" style={{ WebkitTextStroke: '2px white' }}>
+                  
+                  {/* Baris 3: GLITCH EFFECT (SURVIVED) */}
+                  <span className="text-transparent relative hover:text-white transition-colors duration-500 cursor-default animate-reveal delay-300 inline-block animate-text-glitch" style={{ WebkitTextStroke: '2px white' }}>
                     Survived.
                   </span>
                 </h1>
@@ -121,10 +132,8 @@ export default function Home() {
 
           {/* --- DESKTOP BOX CONTENT --- */}
           <div className="col-span-5 flex flex-col justify-end h-full pb-10 z-20">
-            <div className="border border-altera bg-altera-faint p-12 pt-20 backdrop-blur-md shadow-2xl transform hover:-translate-y-2 transition-transform duration-500 relative group overflow-visible">
+            <div className="border border-altera bg-altera-faint p-12 pt-20 backdrop-blur-md shadow-2xl transform hover:-translate-y-2 transition-transform duration-500 relative group overflow-visible animate-reveal delay-300">
               
-              {/* --- LOGO DESKTOP (CORTEIZ STYLE) --- */}
-              {/* blur-[0.8px] supaya tidak terlalu HD */}
               <div className="absolute -top-10 -left-6 w-72 h-24 z-30 animate-grunge blur-[0.8px]">
                  <Image src="/images/logo-humanity.png" alt="Altera Logo Sticker" fill className="object-contain object-left drop-shadow-[0_0_15px_rgba(204,27,27,0.3)]" />
               </div>
