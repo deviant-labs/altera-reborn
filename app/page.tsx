@@ -32,31 +32,29 @@ export default function Home() {
           </div>
         </nav>
 
-        {/* HEADLINE MOBILE DENGAN EFEK BARU */}
-        <div className="flex flex-col gap-4 mb-24">
-          <div className="inline-block self-start border border-altera text-altera bg-altera-faint px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-4 backdrop-blur-md animate-reveal">
+        {/* --- UPDATE DI SINI: GAP diperbesar jadi 6 --- */}
+        <div className="flex flex-col gap-6 mb-32">
+          <div className="inline-block self-start border border-altera text-altera bg-altera-faint px-3 py-1 text-[10px] font-bold uppercase tracking-widest mb-2 backdrop-blur-md animate-reveal">
             ● Official Launch Soon
           </div>
           
-          {/* Baris 1: Muncul Kalem */}
-          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter animate-reveal delay-100">
+          {/* Leading dilonggarkan jadi leading-none biar tidak baku tindis */}
+          <h1 className="text-6xl font-black uppercase leading-none tracking-tighter animate-reveal delay-100">
             Built <br/> From
           </h1>
           
-          {/* Baris 2: Muncul Kalem (Agak Telat) */}
-          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter text-gray-400 animate-reveal delay-200">
+          <h1 className="text-6xl font-black uppercase leading-none tracking-tighter text-gray-400 animate-reveal delay-200">
             What We
           </h1>
           
-          {/* Baris 3: SURVIVED (GLITCH EFFECT) */}
-          {/* animate-text-glitch bikin teksnya bergetar RGB */}
-          <h1 className="text-6xl font-black uppercase leading-[0.9] tracking-tighter text-transparent animate-reveal delay-300 animate-text-glitch" style={{ WebkitTextStroke: '1px white' }}>
+          {/* Ditambah mt-2 biar turun dikit */}
+          <h1 className="text-6xl font-black uppercase leading-none tracking-tighter text-transparent animate-reveal delay-300 animate-text-glitch mt-2" style={{ WebkitTextStroke: '1px white' }}>
             Survived.
           </h1>
         </div>
 
         {/* --- MOBILE BOX CONTENT --- */}
-        <div className="mt-10 border border-altera bg-altera-faint p-6 pt-12 shadow-xl relative backdrop-blur-md overflow-visible group animate-reveal delay-300">
+        <div className="mt-12 border border-altera bg-altera-faint p-6 pt-12 shadow-xl relative backdrop-blur-md overflow-visible group animate-reveal delay-300">
           
           {/* LOGO MOBILE (CORTEIZ STYLE) */}
           <div className="absolute -top-6 -left-2 w-36 h-16 z-20 animate-grunge blur-[0.5px]">
@@ -90,7 +88,7 @@ export default function Home() {
 
 
       {/* ==================================================================
-          TAMPILAN DESKTOP / LAPTOP
+          TAMPILAN DESKTOP / LAPTOP (TIDAK BERUBAH)
          ================================================================== */}
       <div className="hidden lg:flex flex-col min-h-screen p-16 relative z-10">
         
