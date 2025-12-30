@@ -2,36 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Native CSS biar aman */
 body {
   background-color: #050505;
-  color: white;
+  color: #ffffff;
   font-family: 'Helvetica Now Display', 'Helvetica', 'Arial', sans-serif;
   overflow-x: hidden;
 }
 
-h1 { letter-spacing: -0.04em; }
-
-/* Custom Colors */
-.text-altera { color: #CC1B1B; }
-.bg-altera { background-color: #CC1B1B; }
-.border-altera { border-color: #CC1B1B; }
+/* Custom Altera Colors - Hardcoded */
+.text-altera { color: #CC1B1B !important; }
+.bg-altera { background-color: #CC1B1B !important; }
+.border-altera { border-color: #CC1B1B !important; }
 .bg-altera-faint { background-color: rgba(204, 27, 27, 0.1); }
 
-/* Selection Color */
-::selection {
-  background-color: #CC1B1B;
-  color: white;
-}
-
-/* --- INI KUNCINYA (EFEK) --- */
-.bg-grunge {
-  background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-}
-
+/* Overlays */
+.bg-grunge { background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'); }
 .bg-scanline {
-  background-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 50%), linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
+  background-image: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 50%), 
+                    linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
   background-size: 100% 4px, 3px 100%;
+}
+
+/* Keyframes - Grunge Flicker & Glitch */
+@keyframes grunge-flicker {
+  0%, 10%, 25%, 50%, 60%, 82%, 100% { opacity: 1; text-shadow: none; filter: blur(0px); }
+  5% { opacity: 0.8; text-shadow: 2px 0 #CC1B1B; filter: blur(0.5px); }
+  15% { opacity: 0.9; text-shadow: -1px 0 #00ffff; }
+}
+
+@keyframes glitch-shake {
+  0%, 100% { transform: translate(0, 0) skew(0deg); filter: blur(0.5px); }
+  25% { transform: translate(-1px, 1px) skew(-0.5deg); filter: blur(1px); } 
+  50% { transform: translate(1px, -1px) skew(0.5deg); filter: blur(0.5px); }
+}
+
+/* Animation Classes */
+.animate-grunge-text { animation: grunge-flicker 4s infinite steps(5, end); }
+.animate-grunge { animation: glitch-shake 12s infinite ease-in-out; will-change: transform, filter; }
+.animate-scanline { animation: scanline 6s linear infinite; }
+.animate-reveal { animation: fade-in-up 1s ease-out forwards; opacity: 0; }
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes scanline {
@@ -39,117 +52,7 @@ h1 { letter-spacing: -0.04em; }
   100% { background-position: 0 100%; }
 }
 
-.animate-scanline {
-  animation: scanline 6s linear infinite;
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite; /* 10 detik per putaran */
-}
-
-.animate-spin-slow:hover {
-  animation-duration: 2s; /* Kalau di-hover jadi ngebut */
-  cursor: help;
-}
-
-@keyframes glitch-shake {
-  0% { transform: translate(0, 0) skew(0deg); }
-  5% { transform: translate(-2px, 2px) skew(-1deg); }
-  10% { transform: translate(2px, -2px) skew(1deg); }
-  15% { transform: translate(-2px, -2px) skew(-1deg); }
-  20% { transform: translate(2px, 2px) skew(1deg); }
-  25% { transform: translate(0, 0) skew(0deg); }
-  100% { transform: translate(0, 0) skew(0deg); }
-}
-
-.animate-grunge {
-  animation: glitch-shake 3s infinite; /* Bergetar setiap 3 detik */
-  filter: contrast(120%) brightness(110%); /* Sedikit lebih tajam */
-}
-
-/* Biar makin rusak pas di-hover */
-.animate-grunge:hover {
-  animation: glitch-shake 0.5s infinite; /* Getar cepat pas disentuh */
-  cursor: crosshair;
-}
-
-@keyframes glitch-shake {
-  0% { 
-    transform: translate(0, 0) skew(0deg); 
-    filter: blur(0.5px) contrast(120%) brightness(100%); /* Buram dikit default */
-  }
-  20% { 
-    transform: translate(-3px, 3px) skew(-2deg); 
-    filter: blur(3px) contrast(150%) brightness(120%); /* Buram parah pas gerak */
-  } 
-  40% { 
-    transform: translate(3px, -3px) skew(2deg); 
-    filter: blur(1px) contrast(130%) brightness(90%); 
-  }
-  60% { 
-    transform: translate(-1px, -1px) skew(-1deg); 
-    filter: blur(0px) contrast(100%); /* Tajam sebentar */
-  }
-  80% { 
-    transform: translate(1px, 1px) skew(1deg); 
-    filter: blur(2px) contrast(140%); 
-  }
-  100% { 
-    transform: translate(0, 0) skew(0deg); 
-    filter: blur(0.5px) contrast(120%) brightness(100%); 
-  }
-}
-
-.animate-grunge {
-  animation: glitch-shake 4s infinite cubic-bezier(0.36, 0.07, 0.19, 0.97);
-  will-change: transform, filter;
-  mix-blend-mode: hard-light; /* Biar warnanya menyatu kasar dengan background */
-}
-
-.animate-grunge:hover {
-  animation-duration: 0.2s; /* Glitch gila kalau di-hover */
-  cursor: none; /* Kursor hilang biar makin misterius */
-}
-
-@keyframes text-rgb-glitch {
-  0% { text-shadow: 0 0 0 transparent; transform: translate(0); }
-  2% { text-shadow: 2px 0 #CC1B1B, -2px 0 #00FFFF; transform: translate(-2px, 0); }
-  4% { text-shadow: -2px 0 #CC1B1B, 2px 0 #00FFFF; transform: translate(2px, 0); }
-  6% { text-shadow: 0 0 0 transparent; transform: translate(0); }
-  
-  50% { text-shadow: 0 0 0 transparent; transform: translate(0); }
-  52% { text-shadow: -2px 0 #CC1B1B, 2px 0 #00FFFF; transform: translate(1px, 1px); }
-  54% { text-shadow: 0 0 0 transparent; transform: translate(0); }
-  
-  100% { text-shadow: 0 0 0 transparent; transform: translate(0); }
-}
-
-.animate-text-glitch {
-  animation: text-rgb-glitch 3s infinite linear alternate-reverse;
-}
-
-.animate-text-glitch:hover {
-  animation-duration: 0.2s; /* Makin cepat kalau disentuh */
-  cursor: help;
-}
-
-/* Animasi Muncul dari Bawah (Slide Up) */
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-reveal {
-  animation: fade-in-up 1s ease-out forwards;
-  opacity: 0; /* Mulai dari hilang */
-}
-
-/* Delay biar munculnya gantian */
-.delay-100 { animation-delay: 0.2s; }
+.delay-100 { animation-delay: 0.2s; } 
+.delay-150 { animation-delay: 0.3s; }
 .delay-200 { animation-delay: 0.4s; }
 .delay-300 { animation-delay: 0.6s; }
